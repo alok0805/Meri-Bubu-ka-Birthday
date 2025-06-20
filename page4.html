@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page 4 - some beautiful captures of my cutiee pieee 💖</title>
+  <link rel="stylesheet" href="style4.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffdee9 0%, #b5fffc 100%);
+      min-height: 100vh;
+      font-family: 'Outfit', sans-serif;
+      color: #ff1493;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .gallery-container {
+      position: relative;
+      z-index: 2;
+      padding: 40px 10px 30px 10px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      background: rgba(255,255,255,0.55);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px #ffb6d540;
+      backdrop-filter: blur(4px);
+    }
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.7em;
+      color: #e75480;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 18px #fff0f6, 0 1px 0 #fff;
+      letter-spacing: 1px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px 24px;
+      margin-top: 30px;
+    }
+    .photo-card {
+      background: rgba(255,255,255,0.85);
+      border-radius: 18px;
+      box-shadow: 0 4px 18px #e7548030;
+      padding: 18px 14px 12px 14px;
+      width: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 3px solid #ffb6d5;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .photo-card:hover {
+      transform: scale(1.04) rotate(-1deg);
+      box-shadow: 0 8px 32px #e7548050;
+      border-color: #e75480;
+    }
+    .photo-frame {
+      border: 6px solid #fff0f6;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #e7548030;
+      overflow: hidden;
+      margin-bottom: 12px;
+      background: #fff;
+      width: 200px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+      transition: filter 0.3s;
+    }
+    .photo-card p {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.25em;
+      color: #e75480;
+      margin: 0;
+      margin-top: 6px;
+      text-shadow: 0 1px 8px #fff;
+    }
+    .photo-card-comment {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1em;
+      color: #b84d7c;
+      margin-top: 4px;
+      margin-bottom: 0;
+      text-shadow: 0 1px 8px #fff;
+    }
+    .music-player {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      margin-top: 32px;
+    }
+    .music-btn {
+      background: linear-gradient(90deg,#e75480,#ffb6d5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 1.6em;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #e7548040;
+      transition: background 0.3s, transform 0.2s;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .music-btn:hover {
+      background: linear-gradient(90deg,#ffb6d5,#e75480);
+      transform: scale(1.08);
+    }
+    .next-button {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background-color: #ff69b4;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      box-shadow: 0 2px 12px #e7548040;
+    }
+    .next-button:hover {
+      background-color: #ff1493;
+    }
+    @media (max-width: 900px) {
+      .gallery { gap: 24px 10px; }
+      .photo-card { width: 180px; }
+      .photo-frame { width: 150px; height: 200px; }
+    }
+    @media (max-width: 600px) {
+      .gallery { gap: 16px 4px; }
+      .photo-card { width: 98vw; max-width: 320px; }
+      .photo-frame { width: 90vw; max-width: 260px; height: 180px; }
+      .title { font-size: 1.5em; }
+      .music-player { margin-top: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="heartCanvas"></canvas>
+
+  <div class="gallery-container">
+    <h1 class="title">Some Precious picture of my cutiee piee in my gallery, Sweetheart 💕</h1>
+    <div class="gallery">
+      <div class="photo-card fade-in delay-1">
+        <div class="photo-frame">
+          <img src="https://i.postimg.cc/QMpdJ0NB/bubu4.jpg" alt="Bubu 1" />
+        </div>
+        <p>Your Smile Lights Up My World 💖</p>
+        <p class="photo-card-comment">Whenever you smile, my whole day becomes beautiful.</p>
+      </div>
+      <div class="photo-card fade-in delay-2">
+        <div class="photo-frame">
+          <img src="https://i.postimg.cc/FHMZwsyf/bubu3.jpg" alt="Bubu 2" />
+        </div>
+        <p>The Cutest Face I Ever Saw 🌸</p>
+        <p class="photo-card-comment">You are the definition of cuteness, my bubu!</p>
+      </div>
+      <div class="photo-card fade-in delay-3">
+        <div class="photo-frame">
+          <img src="https://i.postimg.cc/1R03qWCb/bubu2.jpg" alt="Bubu 3" />
+        </div>
+        <p>Queen of My Heart 👑</p>
+        <p class="photo-card-comment">You rule my heart with your love and kindness.</p>
+      </div>
+      <div class="photo-card fade-in delay-4">
+        <div class="photo-frame">
+          <img src="https://i.postimg.cc/d3W2tJzK/bubu-1.jpg" alt="Bubu 4" />
+        </div>
+        <p>These Magical Eyes...✨</p>
+        <p class="photo-card-comment">Your eyes speak a thousand words and always mesmerize me.</p>
+      </div>
+      <div class="photo-card fade-in delay-5">
+        <div class="photo-frame">
+          <img src="https://i.postimg.cc/Y9z6m2KP/bubu-5.jpg" alt="Bubu 5" />
+        </div>
+        <p>My Forever Love 💞</p>
+        <p class="photo-card-comment">I want to spend every moment of my life with you.</p>
+      </div>
+    </div>
+    <a href="page5.html" class="next-button">Next ➤</a>
+  </div>
+
+  <!-- Music Player moved below gallery -->
+  <div class="music-player">
+    <button class="music-btn" id="musicToggle" title="Play/Pause Music">⏸️</button>
+    <span style="font-family:'Outfit',sans-serif; color:#e75480; font-size:1.1em;">music sound</span>
+    <audio id="bgMusic" loop>
+      <source src="aap hamri jaan.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  <div id="musicOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.9); align-items:center; justify-content:center; z-index:1000;">
+    <button id="startMusicBtn" style="padding:12px 24px; font-size:1.2em; border:none; border-radius:30px; background:#e75480; color:white; cursor:pointer; box-shadow:0 2px 12px #e7548040;">Start Music</button>
+  </div>
+
+  <script src="script4.js"></script>
+  <script>
+    // Music player toggle
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicToggle');
+    let playing = true;
+    btn.onclick = function() {
+      if (music.paused) {
+        music.play();
+        btn.textContent = "⏸️";
+        playing = true;
+      } else {
+        music.pause();
+        btn.textContent = "▶️";
+        playing = false;
+      }
+    };
+    // Hide default overlay and button
+    document.getElementById('musicOverlay').style.display = "none";
+    document.getElementById('startMusicBtn').style.display = "none";
+
+    // Show custom overlay for "Tap anywhere to play song"
+    function showTapAnywhereOverlay() {
+      const overlay = document.createElement('div');
+      overlay.id = "tapAnywhereOverlay";
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.background = 'rgba(255,255,255,0.92)';
+      overlay.style.display = 'flex';
+      overlay.style.flexDirection = 'column';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.zIndex = 2000;
+
+      const msg = document.createElement('div');
+      msg.textContent = "Tap anywhere to play the song!";
+      msg.style.fontFamily = "'Pacifico', cursive";
+      msg.style.fontSize = "2em";
+      msg.style.color = "#e75480";
+      msg.style.marginBottom = "24px";
+
+      overlay.appendChild(msg);
+      document.body.appendChild(overlay);
+
+      function startMusic() {
+        music.play();
+        btn.textContent = "⏸️";
+        overlay.remove();
+        document.removeEventListener('click', startMusic);
+        document.removeEventListener('touchstart', startMusic);
+      }
+
+      document.addEventListener('click', startMusic);
+      document.addEventListener('touchstart', startMusic);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      music.pause();
+      showTapAnywhereOverlay();
+    });
+  </script>
+</body>
+</html>

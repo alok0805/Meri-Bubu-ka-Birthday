@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(to right, #ffc0cb, #ffe4e1);
+  color: #fff;
+  min-height: 100vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 700px;
+  margin: 100px auto;
+  padding: 30px 20px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 0 30px #ff69b4;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.8rem;
+  color: #fff0f5;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px #f86a99;
+}
+
+p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff1414;
+  line-height: 1.6;
+  color: #f86a99;
+}
+
+.next-button {
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  background: #ff1493;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.next-button:hover {
+  background: #ff69b4;
+  transform: scale(1.05);
+}
+
+/* Fade-In Animations */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s forwards;
+}
+
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1.5s; }
+.delay-3 { animation-delay: 2.5s; }
+.delay-4 { animation-delay: 3.5s; }
+.delay-5 { animation-delay: 4.5s; }
+.delay-6 { animation-delay: 5.5s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 60px 15px;
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  .next-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+/* Add this at the end of your cake.css for mobile responsiveness */
+@media (max-width: 600px) {
+  body, html {
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  .container {
+    padding: 12px 4vw;
+    margin: 30px 0 0 0;
+    max-width: 98vw;
+  }
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+  p {
+    font-size: 1.05rem !important;
+    line-height: 1.5;
+  }
+  .next-button, #playMusicBtn {
+    font-size: 1em !important;
+    padding: 10px 16px !important;
+    border-radius: 18px !important;
+    top: 10px !important;
+    right: 10px !important;
+  }
+  #playMusicBtn {
+    top: 10px !important;
+    right: 10px !important;
+    left: auto !important;
+  }
+  .cake {
+    transform: scale(0.8);
+    margin: 0 auto 18px auto;
+  }
+  canvas#heartCanvas {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}

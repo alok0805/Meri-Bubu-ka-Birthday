@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Bubu 🎂</title>
+  <link rel="stylesheet" href="style1.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Outfit:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="heartCanvas"></canvas>
+<canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:0;"></canvas>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="Happy birthday tune.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <button id="playMusicBtn" style="position:fixed;top:18px;right:18px;z-index:1000;padding:10px 22px;font-size:1.1em;background:#e75480;color:#fff;border:none;border-radius:22px;box-shadow:0 2px 12px #e7548040;cursor:pointer;font-family:'Outfit',sans-serif;">
+    ▶️ Play Music
+  </button>
+
+  <div class="container">
+    <h1 class="fade delay-1">Happy 18th Birthday Mera Cutieee Piee 🎉💗</h1>
+
+    <!-- Life Timer Start -->
+    <div id="lifeTimer" class="fade delay-1" style="font-size:1.2em; margin-bottom: 20px; color: #e75480;">
+      Loading time on earth...
+    </div>
+    <!-- Life Timer End -->
+
+    <p class="fade delay-1">Meri pyaari Bubu, aaj ka din sirf aapke liye hai! 🎂🥳</p>
+    <p class="fade delay-2">Aaj aap apni zindagi ke sabse khoobsurat mod par ho — <strong>18 saal</strong> ki ho gayi ho, meri jaan! 🥹💕</p>
+    <p class="fade delay-3">Har din aap aur bhi zyada pyari, samajhdar, aur khubsurat hoti ja rahi ho 🌸✨</p>
+    <p class="fade delay-4">Aapki muskurahat meri subah hai 😍 aur aapki awaaz meri shaam 🌙💖</p>
+    <p class="fade delay-5">Aap sirf sundar nahi ho, aap meri duniya ho — ek aisi roshni jo andheron ko bhi mehka de 🌟💫</p>
+    <p class="fade delay-6">Meri har dhadkan sirf aapke liye dhadakti hai, meri Bubu, meri cutie pie 💝🥰</p>
+    <p class="fade delay-8">Happy 18th Birthday jaaneman 🎂💘 Ab har kadam mein aapka saath chahiye, hamesha ke liye 🤝💍</p>
+
+    <a href="page2.html" class="next-button fade delay-6">Next ➤</a>
+  </div>
+
+  <script src="script1.js"></script>
+  <script>
+  // --- Confetti (Party Popper) Animation ---
+  const confettiCanvas = document.getElementById('confettiCanvas');
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+  const cctx = confettiCanvas.getContext('2d');
+
+  const confettiColors = ['#ffb6d5', '#ffe066', '#b5ead7', '#ff94cc', '#e75480', '#fff0f6', '#f7cac9', '#f6e2b3'];
+  const confettiPieces = [];
+
+  function ConfettiPiece() {
+    this.x = Math.random() * confettiCanvas.width;
+    this.y = Math.random() * -confettiCanvas.height;
+    this.radius = 6 + Math.random() * 8;
+    this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    this.speed = 2 + Math.random() * 3;
+    this.tilt = Math.random() * 10 - 5;
+    this.tiltAngle = Math.random() * Math.PI * 2;
+    this.tiltSpeed = 0.05 + Math.random() * 0.07;
+  }
+  ConfettiPiece.prototype.update = function() {
+    this.y += this.speed;
+    this.tiltAngle += this.tiltSpeed;
+    this.x += Math.sin(this.tiltAngle) * 1.5;
+    if (this.y > confettiCanvas.height + 20) {
+      this.x = Math.random() * confettiCanvas.width;
+      this.y = Math.random() * -20;
+    }
+  };
+  ConfettiPiece.prototype.draw = function(ctx) {
+    ctx.beginPath();
+    ctx.ellipse(this.x, this.y, this.radius, this.radius / 2, this.tiltAngle, 0, 2 * Math.PI);
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = 0.85;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  };
+
+  for (let i = 0; i < 60; i++) {
+    confettiPieces.push(new ConfettiPiece());
+  }
+
+  function animateConfetti() {
+    cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confettiPieces.forEach(piece => {
+      piece.update();
+      piece.draw(cctx);
+    });
+    requestAnimationFrame(animateConfetti);
+  }
+  animateConfetti();
+
+  // --- Existing Music Logic ---
+  const music = document.getElementById('bgMusic');
+  const playBtn = document.getElementById('playMusicBtn');
+
+  // Restore song time if available
+  const savedTime = localStorage.getItem('bdaySongTime');
+  if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+  }
+
+  // Show overlay and play music on any click/tap
+  function enableMusicOnFirstInteraction() {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.background = 'rgba(255,255,255,0.92)';
+    overlay.style.display = 'flex';
+    overlay.style.flexDirection = 'column';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = 2000;
+
+    const msg = document.createElement('div');
+    msg.textContent = "Tap anywhere to play the song!";
+    msg.style.fontFamily = "'Pacifico', cursive";
+    msg.style.fontSize = "2em";
+    msg.style.color = "#e75480";
+    msg.style.marginBottom = "24px";
+
+    overlay.appendChild(msg);
+    document.body.appendChild(overlay);
+
+    function startMusic() {
+      // Play from saved time (already set above)
+      music.play();
+      overlay.remove();
+      playBtn.style.display = "none";
+      // Scroll to top after music starts
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.removeEventListener('click', startMusic);
+      document.removeEventListener('touchstart', startMusic);
+    }
+
+    document.addEventListener('click', startMusic);
+    document.addEventListener('touchstart', startMusic);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    enableMusicOnFirstInteraction();
+    music.pause();
+    playBtn.style.display = "none";
+  });
+
+  // Save current time before leaving the page
+  window.addEventListener('beforeunload', function() {
+    if (music && !music.paused) {
+      localStorage.setItem('bdaySongTime', music.currentTime);
+    }
+  });
+  </script>
+</body>
+</html>

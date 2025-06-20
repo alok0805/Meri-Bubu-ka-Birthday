@@ -1,0 +1,156 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Outfit', sans-serif;
+  background-color: #1a1a2e;
+  color: #fff;
+}
+
+canvas#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px #ff6ec4;
+}
+
+.main-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #ff94cc;
+  margin-bottom: 30px;
+  animation: fadeInUp 2s ease forwards;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 1.5s; }
+.delay-4 { animation-delay: 2s; }
+.delay-5 { animation-delay: 2.5s; }
+.delay-6 { animation-delay: 3s; }
+.delay-7 { animation-delay: 3.5s; }
+.delay-8 { animation-delay: 4s; }
+
+p, .fade-in {
+  font-family: 'Dancing Script', cursive; /* Cute, stylish font for paragraphs */
+  font-size: 1.35rem;
+  color: #ffd6fa;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
+.final-message {
+  font-family: 'Pacifico', cursive; /* Cute, bold font for final message */
+  font-size: 2rem;
+  color: #ffc0cb;
+  margin-top: 40px;
+  animation: glow 2s ease-in-out infinite alternate;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 12px #fff0f6;
+}
+
+.love-you-btn {
+  display: inline-block;
+  margin: 48px auto 0 auto;
+  padding: 16px 38px;
+  font-size: 1.5rem;
+  font-family: 'Pacifico', cursive;
+  background: linear-gradient(90deg, #ff94cc 40%, #ff5ca2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 2px 18px #ff6ec480;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 2;
+  letter-spacing: 1px;
+  animation: fadeInUp 2s 3.5s both;
+}
+
+.love-you-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 32px #ff6ec4cc;
+  background: linear-gradient(90deg, #ff5ca2 40%, #ff94cc 100%);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ff66b2, 0 0 20px #ff66b2;
+  }
+  to {
+    text-shadow: 0 0 20px #ff99cc, 0 0 30px #ff99cc;
+  }
+}
+
+.fireworks-canvas, .sparkle-canvas {
+  animation: fadeCanvas 0.4s;
+}
+@keyframes fadeCanvas {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Add this at the end of your style8.css for mobile responsiveness */
+@media (max-width: 600px) {
+  body, html {
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  .content {
+    padding: 14px 4vw 18px 4vw;
+    margin: 24px 0 0 0;
+    max-width: 99vw;
+    border-radius: 14px;
+  }
+  .main-title {
+    font-size: 2rem !important;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  p, .fade-in {
+    font-size: 1em !important;
+    line-height: 1.5;
+    padding: 6px 2vw;
+    margin-bottom: 10px;
+  }
+  .final-message {
+    font-size: 1.2rem !important;
+    margin-top: 24px !important;
+  }
+  .love-you-btn {
+    font-size: 1.1em !important;
+    padding: 12px 22px !important;
+    border-radius: 20px !important;
+    margin-top: 18px !important;
+  }
+  canvas#bgCanvas {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}

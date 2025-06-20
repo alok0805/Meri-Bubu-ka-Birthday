@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Game for Bubu 💖</title>
+  <link rel="stylesheet" href="style7.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Background Music (no controls, not autoplay) -->
+  <audio id="bgMusic" loop>
+    <source src="o rangraz.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <h1 class="title">Cute Memory Emoji Game 🧠💘</h1>
+    <p class="subtitle">Find all matching emojis to prove your love memory, sweetheart! 💞</p>
+
+    <div class="game-board" id="gameBoard"></div>
+
+    <div class="password-section">
+      <h2 class="question">Kya aapko pata hai bubu mai aapse kitna pyaar karta hu???? 🥺❤</h2>
+      <p class="hint">Hint: utna hi bubu jitna asmaan me stars hai 🌌</p>
+      <input type="text" id="passwordInput" placeholder="Enter your answer...">
+      <button onclick="checkPassword()">Submit</button>
+      <p id="errorMessage"></p>
+      <a id="nextPageLink" href="page8.html" class="next-button" style="display: none;">Next ➤</a>
+      <a href="page8.html" class="next-button" style="margin-top:18px;">Next Page ➤</a>
+    </div>
+  </div>
+
+  <script src="script7.js"></script>
+  <script>
+    // Remove music player controls and add tap anywhere overlay
+    const music = document.getElementById('bgMusic');
+    function enableMusicOnFirstInteraction() {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.background = 'rgba(255,255,255,0.92)';
+      overlay.style.display = 'flex';
+      overlay.style.flexDirection = 'column';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.zIndex = 2000;
+
+      const msg = document.createElement('div');
+      msg.textContent = "Tap anywhere to play the music!";
+      msg.style.fontFamily = "'Pacifico', cursive";
+      msg.style.fontSize = "2em";
+      msg.style.color = "#e75480";
+      msg.style.marginBottom = "24px";
+
+      overlay.appendChild(msg);
+      document.body.appendChild(overlay);
+
+      function startMusic() {
+        music.play();
+        overlay.remove();
+        document.removeEventListener('click', startMusic);
+        document.removeEventListener('touchstart', startMusic);
+      }
+
+      document.addEventListener('click', startMusic);
+      document.addEventListener('touchstart', startMusic);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      enableMusicOnFirstInteraction();
+      music.pause();
+    });
+  </script>
+</body>
+</html>

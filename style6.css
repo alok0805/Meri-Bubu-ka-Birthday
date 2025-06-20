@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg, #ffd1dc, #ffe6f0);
+  font-family: 'Dancing Script', cursive;
+  overflow-x: hidden;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.message-container {
+  position: relative;
+  z-index: 1;
+  padding: 50px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.message {
+  opacity: 0;
+  transform: translateY(20px);
+  font-size: 1.8rem;
+  margin: 20px 0;
+  transition: all 0.8s ease;
+  color: #d4006b;
+}
+
+.message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.next-button {
+  display: inline-block;
+  margin: 40px auto;
+  padding: 12px 28px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #ff5ca2;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 4.0s  ease;
+  position: relative;
+  z-index: 1;
+}
+
+.next-button:hover {
+  background-color: #ff2c83;
+}
+
+/* Add this at the end of your style6.css for mobile responsiveness */
+@media (max-width: 600px) {
+  body, html {
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  .message-container {
+    padding: 12px 4vw;
+    margin-top: 24vw;
+    max-width: 98vw;
+    border-radius: 14px;
+  }
+  .message {
+    font-size: 1.1em !important;
+    line-height: 1.5;
+    padding: 6px 2vw;
+  }
+  .next-button {
+    font-size: 1em !important;
+    padding: 10px 16px !important;
+    border-radius: 18px !important;
+    margin-top: 18px !important;
+  }
+  canvas#heartCanvas {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}

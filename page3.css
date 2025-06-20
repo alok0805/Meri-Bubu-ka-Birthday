@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Dancing Script', cursive;
+  /* Beautiful, dreamy, cute gradient with sparkles overlay */
+  background: linear-gradient(120deg, #ffe0ec 0%, #ffd6fa 40%, #fff0f6 100%);
+  min-height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  color: #fff;
+  /* Add subtle sparkles using a repeating PNG pattern */
+  background-image:
+    linear-gradient(120deg, #ffe0ec 0%, #ffd6fa 40%, #fff0f6 100%),
+    url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-repeat: repeat;
+  background-size: cover, auto;
+}
+
+/* Optional: Add a soft vignette for more dreamy effect */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(255,182,193,0.12) 0%, rgba(255,182,193,0.08) 60%, rgba(255,182,193,0.18) 100%);
+}
+
+/* Floating Heart Canvas */
+canvas#hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Main Content Container */
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 720px;
+  margin: 90px auto;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 20px #ff69b4;
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+
+/* Headings & Paragraphs */
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.7rem;
+  color: #fff0f5;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff1493;
+}
+
+p {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 6px #ff69b4;
+  color: #fffafc;
+}
+
+/* Button Styling */
+.next-button {
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  background: #ff1493;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.next-button:hover {
+  background: #ff69b4;
+  transform: scale(1.05);
+}
+
+/* Cake Styles */
+.cake {
+  position: relative;
+  margin: 40px auto;
+  width: 150px;
+  height: 200px;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.layer {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  background: #ffb6c1;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.layer-bottom {
+  bottom: 0;
+}
+
+.layer-middle {
+  bottom: 45px;
+  width: 85%;
+  left: 7.5%;
+  background: #ff69b4;
+}
+
+.layer-top {
+  bottom: 90px;
+  width: 70%;
+  left: 15%;
+  background: #ff1493;
+}
+
+.plate {
+  position: absolute;
+  bottom: -15px;
+  width: 110%;
+  left: -5%;
+  height: 15px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.candle {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 10px;
+  height: 30px;
+  background: #fff;
+  border-radius: 5px;
+  transform: translateX(-50%);
+}
+
+.flame {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: orange;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.4s infinite alternate;
+}
+
+/* Animations */
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1.2); opacity: 0.7; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Fade-In Reveal */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s forwards;
+}
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.9s; }
+.delay-3 { animation-delay: 1.5s; }
+.delay-4 { animation-delay: 2.1s; }
+.delay-5 { animation-delay: 2.7s; }
+.delay-6 { animation-delay: 3.3s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add this at the end of your page3.css for mobile responsiveness */
+@media (max-width: 600px) {
+  body, html {
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  .container {
+    padding: 14px 4vw;
+    margin-top: 38vh;
+    max-width: 98vw;
+    border-radius: 14px;
+  }
+  .container h1 {
+    font-size: 1.25em !important;
+    line-height: 1.2;
+    padding: 0 2vw;
+  }
+  .container p {
+    font-size: 1em !important;
+    line-height: 1.5;
+    padding: 6px 2vw;
+  }
+  .next-button {
+    font-size: 1em !important;
+    padding: 10px 16px !important;
+    border-radius: 16px !important;
+    margin-top: 12px !important;
+  }
+  canvas#hearts {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}

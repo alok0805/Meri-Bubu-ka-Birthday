@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎂 18th Birthday Cake</title>
+  <link rel="stylesheet" href="cake.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="heartCanvas"></canvas>
+
+  <!-- Music -->
+  <audio id="bgMusic" loop>
+    <source src="Happy birthday tune.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="playMusicBtn" style="position:fixed;top:18px;right:18px;z-index:1000;padding:10px 22px;font-size:1.1em;background:#e75480;color:#fff;border:none;border-radius:22px;box-shadow:0 2px 12px #e7548040;cursor:pointer;font-family:'Outfit',sans-serif;">
+    ▶️ Play Music
+  </button>
+
+  <div class="container">
+    <h1 class="fade delay-1">Aapko 18th Birthday ki der sari subhkamnaye 🎉🎂</h1>
+    <p class="fade delay-2">Meri jaan, aapke is khaas din pe yeh virtual cake sirf aapke liye hai 💖</p>
+    <p class="fade delay-3">Aapki muskurahat meri duniya hai, aur aapka khushi mera maksad. Is cake ke saath, meri taraf se aapko pyaar aur khushiyon ki kami na ho 💕</p>
+
+    <!-- 🎂 Animated Cake -->
+    <div class="cake fade delay-3">
+      <div class="plate"></div>
+      <div class="layer layer-bottom"></div>
+      <div class="layer layer-middle"></div>
+      <div class="layer layer-top"></div>
+      <div class="candle">
+        <div class="flame"></div>
+      </div>
+    </div>
+
+    <a href="page3.html" class="next-button fade delay-4">Click here for cake ➤</a>
+  </div>
+
+  <script src="heart.js"></script>
+  <script>
+  const music = document.getElementById('bgMusic');
+  const playBtn = document.getElementById('playMusicBtn');
+  // Get saved time from previous page
+  const savedTime = localStorage.getItem('bdaySongTime');
+  if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+  }
+
+  // Show overlay and play music on any click/tap
+  function enableMusicOnFirstInteraction() {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.background = 'rgba(255,255,255,0.92)';
+    overlay.style.display = 'flex';
+    overlay.style.flexDirection = 'column';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = 2000;
+
+    const msg = document.createElement('div');
+    msg.textContent = "Tap anywhere to continue the song!";
+    msg.style.fontFamily = "'Pacifico', cursive";
+    msg.style.fontSize = "2em";
+    msg.style.color = "#e75480";
+    msg.style.marginBottom = "24px";
+
+    overlay.appendChild(msg);
+    document.body.appendChild(overlay);
+
+    function startMusic() {
+      // Play from saved time (already set above)
+      music.play();
+      playBtn.style.display = "none";
+      overlay.remove();
+      document.removeEventListener('click', startMusic);
+      document.removeEventListener('touchstart', startMusic);
+    }
+
+    document.addEventListener('click', startMusic);
+    document.addEventListener('touchstart', startMusic);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    enableMusicOnFirstInteraction();
+    music.pause();
+    playBtn.style.display = "none";
+  });
+
+  // Save current time before leaving the page
+  window.addEventListener('beforeunload', function() {
+    if (music && !music.paused) {
+      localStorage.setItem('bdaySongTime', music.currentTime);
+    }
+  });
+  </script>
+</body>
+</html>

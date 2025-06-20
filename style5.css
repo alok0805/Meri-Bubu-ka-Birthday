@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Dancing Script', cursive;
+  background: linear-gradient(120deg, #ffe0ec 0%, #ffd6fa 40%, #fff0f6 100%);
+  min-height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  color: #e75480;
+  /* Add sparkles overlay */
+  background-image:
+    linear-gradient(120deg, #ffe0ec 0%, #ffd6fa 40%, #fff0f6 100%),
+    url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-repeat: repeat;
+  background-size: cover, auto;
+}
+
+/* Soft vignette for dreamy effect */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(255,182,193,0.13) 0%, rgba(255,182,193,0.08) 60%, rgba(255,182,193,0.18) 100%);
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 700px;
+  margin: 100px auto;
+  padding: 40px 24px 36px 24px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 32px;
+  box-shadow: 0 0 36px #ffb6d5a0;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5rem;
+  color: #e75480;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 18px #fff0f6, 0 1px 0 #fff;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: #d72660;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 10px #fff0f6;
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 18px;
+  line-height: 1.7;
+  color: #b84d7c;
+  background: rgba(255,240,246,0.7);
+  border-radius: 18px;
+  padding: 14px 0;
+  box-shadow: 0 1px 8px #e7548010;
+  font-family: 'Dancing Script', cursive; /* Changed from 'Outfit' to 'Dancing Script' */
+  text-shadow: 0 1px 8px #fff;
+  animation: fadeInUp 1.2s both;
+}
+
+.next-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 30px;
+  background: linear-gradient(90deg,#e75480,#ffb6d5);
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 35px;
+  text-decoration: none;
+  box-shadow: 0 0 12px #ff69b4;
+  font-family: 'Outfit', sans-serif;
+  font-weight: bold;
+  transition: 0.3s ease;
+  border: none;
+}
+
+.next-button:hover {
+  background: linear-gradient(90deg,#ffb6d5,#e75480);
+  transform: scale(1.05);
+}
+
+/* Fade-in animation */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 1.5s; }
+.delay-4 { animation-delay: 2s; }
+.delay-5 { animation-delay: 2.5s; }
+.delay-6 { animation-delay: 3s; }
+.delay-7 { animation-delay: 3.5s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 700px) {
+  .container {
+    margin: 40px 6vw;
+    padding: 18px 4vw 18px 4vw;
+  }
+  h1 { font-size: 1.4em; }
+  h2 { font-size: 1.1em; }
+  p { font-size: 1em; }
+}
+
+/* Add this at the end of your style5.css for mobile responsiveness */
+@media (max-width: 600px) {
+  body, html {
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  .container {
+    padding: 14px 4vw 18px 4vw;
+    margin: 30px 2vw 0 2vw;
+    max-width: 99vw;
+    border-radius: 16px;
+  }
+  h1 {
+    font-size: 1.3em !important;
+    line-height: 1.2;
+    padding: 0 2vw;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 1.1em !important;
+    margin-bottom: 8px;
+  }
+  p {
+    font-size: 1em !important;
+    line-height: 1.5;
+    padding: 8px 2vw;
+    margin-bottom: 10px;
+  }
+  .next-button {
+    font-size: 1em !important;
+    padding: 10px 16px !important;
+    border-radius: 18px !important;
+    margin-top: 16px !important;
+  }
+  canvas#heartCanvas {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}

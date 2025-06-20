@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 18th Birthday 🎂</title>
+  <link rel="stylesheet" href="page3.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Outfit:wght@300;500&family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe0ec 0%, #fff0f6 100%);
+      /* Allow scrolling */
+      overflow-y: auto;
+    }
+    #hearts {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .container {
+      position: relative;
+      margin: 0 auto;
+      margin-top: 68vh;
+      width: 90vw;
+      max-width: 600px;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 4px 32px #e7548030;
+      border-radius: 24px;
+      z-index: 2;
+      text-align: center;
+      padding: 32px 18px 28px 18px;
+      backdrop-filter: blur(2px);
+      animation: fadeInUp 1.2s cubic-bezier(.23,1.02,.32,1) both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(60px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .container h1 {
+      margin-bottom: 24px;
+      margin-top: 0;
+      color: #e75480;
+      font-family: 'Pacifico',cursive;
+      text-shadow: 0 2px 12px #fff0f6;
+      font-size: 2.1em;
+      letter-spacing: 1px;
+      animation: fadeIn 1.2s 0.2s both;
+    }
+    .container p {
+      margin: 14px 0;
+      font-size: 1.15em;
+      line-height: 1.7;
+      border-radius: 12px;
+      padding: 8px 0;
+      background: rgba(255,240,246,0.5);
+      box-shadow: 0 1px 8px #e7548010;
+      animation: fadeIn 1.2s both;
+    }
+    .container p:nth-child(2) { color: #d72660; font-family: 'Outfit',sans-serif; animation-delay: .3s;}
+    .container p:nth-child(3) { color: #e75480; font-family: 'Dancing Script',cursive; font-size:1.25em; animation-delay: .5s;}
+    .container p:nth-child(4) { color: #d72660; font-family: 'Outfit',sans-serif; animation-delay: .7s;}
+    .container p:nth-child(5) { color: #e75480; font-family: 'Dancing Script',cursive; font-size:1.22em; animation-delay: .9s;}
+    .next-button {
+      margin-top: 18px;
+      display: inline-block;
+      padding: 10px 28px;
+      background: linear-gradient(90deg,#e75480,#ffb6d5);
+      color: #fff;
+      border: none;
+      border-radius: 22px;
+      font-size: 1.1em;
+      font-family: 'Outfit',sans-serif;
+      text-decoration: none;
+      box-shadow: 0 2px 12px #e7548040;
+      transition: background 0.3s, transform 0.2s;
+      animation: fadeIn 1.2s 1.1s both;
+    }
+    .next-button:hover {
+      background: linear-gradient(90deg,#ffb6d5,#e75480);
+      transform: scale(1.06);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    @media (max-width: 600px) {
+      .container { margin-top: 56vh; padding: 18px 4vw 18px 4vw;}
+      .container h1 { font-size: 1.2em; }
+      .container p { font-size: 1em;}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="hearts"></canvas>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="Happy birthday tune.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <h1>Happy 18th Birthday, Meri Jaan 💖🎉</h1>
+    <p>Aaj aapke is khaas din par, main dua karta hoon ki zindagi ke har mod par sirf khushiyaan ho. 🌸</p>
+    <p>Aapki muskaan meri duniya hai aur aapka saath meri taaqat. 💫</p>
+    <p>Doori sirf faaslon mein hai, dil toh hamesha paas hai. ❤</p>
+    <p>18 saal ke is padav par, main aapse ek wada karta hoon... hamesha aapka rahunga. 🌙</p>
+    <a href="page4.html" class="next-button">Next ➤</a>
+  </div>
+
+  <script src="page3.js"></script>
+  <script>
+  const music = document.querySelector('audio');
+  // Get saved time from previous page
+  const savedTime = localStorage.getItem('bdaySongTime');
+  if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+  }
+
+  // Show overlay and play music on any click/tap
+  function enableMusicOnFirstInteraction() {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.background = 'rgba(255,255,255,0.92)';
+    overlay.style.display = 'flex';
+    overlay.style.flexDirection = 'column';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = 2000;
+
+    const msg = document.createElement('div');
+    msg.textContent = "Tap anywhere to continue the song!";
+    msg.style.fontFamily = "'Pacifico', cursive";
+    msg.style.fontSize = "2em";
+    msg.style.color = "#e75480";
+    msg.style.marginBottom = "24px";
+
+    overlay.appendChild(msg);
+    document.body.appendChild(overlay);
+
+    function startMusic() {
+      music.play();
+      overlay.remove();
+      document.removeEventListener('click', startMusic);
+      document.removeEventListener('touchstart', startMusic);
+    }
+
+    document.addEventListener('click', startMusic);
+    document.addEventListener('touchstart', startMusic);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    enableMusicOnFirstInteraction();
+    music.pause();
+  });
+
+  // Save current time before leaving the page
+  window.addEventListener('beforeunload', function() {
+    if (music && !music.paused) {
+      localStorage.setItem('bdaySongTime', music.currentTime);
+    }
+  });
+  </script>
+</body>
+</html>

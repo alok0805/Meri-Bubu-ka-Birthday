@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forever Yours ❤</title>
+  <link rel="stylesheet" href="style8.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="char kadam.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="content">
+    <h1 class="main-title">Happy 18th Birthday to My Future Wifey 💍💖</h1>
+
+    <p class="fade-in delay-1">Sweetheart 🥰, you are the softest part of my soul 💗, the calm in my chaos 🌈, the light in every dark hour 🌟.</p>
+    <p class="fade-in delay-2">Your smile 😊 makes everything feel better, and your presence turns moments into memories ✨📸.</p>
+    <p class="fade-in delay-3">I promise you this — I will hold your hand forever 🤝, through every season 🍃☀🍂❄, every storm ⛈, every sunrise 🌅.</p>
+    <p class="fade-in delay-4">One day, I’ll put that sindoor in your hair 💫👰 and call you my wife with all the love in the world 🌍❤️.</p>
+    <!-- Thank you line added below -->
+    <p class="fade-in delay-5" style="font-weight:bold; color:#ffd6fa;">
+      Thank you for being the world's best girlfriend, my love! 🏆💖 You make every day brighter and my heart so full. 🌞💞
+    </p>
+    <p class="fade-in delay-6" style="color:#ffd6fa;">
+      I am so lucky to have you in my life 🍀💑 and I want you by my side forever and ever ♾️💍.
+    </p>
+    <p class="fade-in delay-7">You're not just my love 💕. You're my best friend 👩‍❤️‍👨, my home 🏡, my forever ♾️.</p>
+    <p class="fade-in delay-8">I will marry you 💍, love you ❤️, and choose you — every single day 📅.</p>
+
+    <h2 class="final-message">Happy Birthday once again, my jaaneman 🎂. Forever yours... Love you endlessly bubu 💘.</h2>
+
+    <!-- I Love You too Button -->
+    <button id="loveYouBtn" class="love-you-btn fade-in delay-7">I Love You too babu💖🎉</button>
+  </div>
+
+  <script src="script8.js"></script>
+  <script>
+    // Tap anywhere to play music overlay
+    const music = document.getElementById('bgMusic');
+    function enableMusicOnFirstInteraction() {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.background = 'rgba(255,255,255,0.92)';
+      overlay.style.display = 'flex';
+      overlay.style.flexDirection = 'column';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.zIndex = 2000;
+
+      const msg = document.createElement('div');
+      msg.textContent = "Tap anywhere to play the music! 🎶";
+      msg.style.fontFamily = "'Pacifico', cursive";
+      msg.style.fontSize = "2em";
+      msg.style.color = "#e75480";
+      msg.style.marginBottom = "24px";
+
+      overlay.appendChild(msg);
+      document.body.appendChild(overlay);
+
+      function startMusic() {
+        music.play();
+        overlay.remove();
+        window.scrollTo({ top: 0, behavior: "smooth" }); // Always scroll to top after music starts
+        document.removeEventListener('click', startMusic);
+        document.removeEventListener('touchstart', startMusic);
+      }
+
+      document.addEventListener('click', startMusic);
+      document.addEventListener('touchstart', startMusic);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      enableMusicOnFirstInteraction();
+      music.pause();
+    });
+
+    // Fireworks & Confetti Animation on Button Click
+    document.getElementById('loveYouBtn').onclick = function() {
+      showFireworksAndConfetti();
+    };
+
+    // Fireworks + Confetti Animation
+    function showFireworksAndConfetti() {
+      // --- Confetti ---
+      let confettiCanvas = document.createElement('canvas');
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+      confettiCanvas.style.position = 'fixed';
+      confettiCanvas.style.top = 0;
+      confettiCanvas.style.left = 0;
+      confettiCanvas.style.width = '100vw';
+      confettiCanvas.style.height = '100vh';
+      confettiCanvas.style.pointerEvents = 'none';
+      confettiCanvas.style.zIndex = 3000;
+      document.body.appendChild(confettiCanvas);
+      const ctx = confettiCanvas.getContext('2d');
+      const confettiColors = ['#ffb6d5', '#ffe066', '#b5ead7', '#ff94cc', '#e75480', '#fff0f6', '#f7cac9', '#f6e2b3'];
+      const confettiPieces = [];
+      function ConfettiPiece() {
+        this.x = Math.random() * confettiCanvas.width;
+        this.y = Math.random() * -confettiCanvas.height;
+        this.radius = 6 + Math.random() * 8;
+        this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        this.speed = 2 + Math.random() * 3;
+        this.tilt = Math.random() * 10 - 5;
+        this.tiltAngle = Math.random() * Math.PI * 2;
+        this.tiltSpeed = 0.05 + Math.random() * 0.07;
+      }
+      ConfettiPiece.prototype.update = function() {
+        this.y += this.speed;
+        this.tiltAngle += this.tiltSpeed;
+        this.x += Math.sin(this.tiltAngle) * 1.5;
+        if (this.y > confettiCanvas.height + 20) {
+          this.x = Math.random() * confettiCanvas.width;
+          this.y = Math.random() * -20;
+        }
+      };
+      ConfettiPiece.prototype.draw = function(ctx) {
+        ctx.beginPath();
+        ctx.ellipse(this.x, this.y, this.radius, this.radius / 2, this.tiltAngle, 0, 2 * Math.PI);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = 0.85;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      };
+      for (let i = 0; i < 80; i++) confettiPieces.push(new ConfettiPiece());
+      let frame = 0;
+      function animateConfetti() {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        confettiPieces.forEach(piece => {
+          piece.update();
+          piece.draw(ctx);
+        });
+        frame++;
+        if (frame < 120) {
+          requestAnimationFrame(animateConfetti);
+        } else {
+          confettiCanvas.remove();
+        }
+      }
+      animateConfetti();
+
+      // --- Fireworks ---
+      let fireCanvas = document.createElement('canvas');
+      fireCanvas.width = window.innerWidth;
+      fireCanvas.height = window.innerHeight;
+      fireCanvas.style.position = 'fixed';
+      fireCanvas.style.top = 0;
+      fireCanvas.style.left = 0;
+      fireCanvas.style.width = '100vw';
+      fireCanvas.style.height = '100vh';
+      fireCanvas.style.pointerEvents = 'none';
+      fireCanvas.style.zIndex = 3001;
+      document.body.appendChild(fireCanvas);
+      const fctx = fireCanvas.getContext('2d');
+      let particles = [];
+      function Firework(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.radius = 2 + Math.random() * 2;
+        this.angle = Math.random() * 2 * Math.PI;
+        this.speed = 3 + Math.random() * 3;
+        this.alpha = 1;
+        this.life = 60 + Math.random() * 20;
+        this.dx = Math.cos(this.angle) * this.speed;
+        this.dy = Math.sin(this.angle) * this.speed;
+      }
+      Firework.prototype.update = function() {
+        this.x += this.dx;
+        this.y += this.dy;
+        this.dy += 0.04; // gravity
+        this.alpha -= 0.015;
+        this.life--;
+      };
+      Firework.prototype.draw = function(ctx) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(this.alpha, 0);
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 12;
+        ctx.fill();
+        ctx.restore();
+      };
+      // Launch several fireworks at random positions
+      for (let i = 0; i < 6; i++) {
+        let fx = Math.random() * fireCanvas.width * 0.8 + fireCanvas.width * 0.1;
+        let fy = Math.random() * fireCanvas.height * 0.4 + fireCanvas.height * 0.1;
+        let color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        for (let j = 0; j < 36; j++) {
+          particles.push(new Firework(fx, fy, color));
+        }
+      }
+      let fireFrame = 0;
+      function animateFireworks() {
+        fctx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
+        particles.forEach(p => {
+          p.update();
+          p.draw(fctx);
+        });
+        particles = particles.filter(p => p.life > 0 && p.alpha > 0);
+        fireFrame++;
+        if (fireFrame < 80) {
+          requestAnimationFrame(animateFireworks);
+        } else {
+          fireCanvas.remove();
+        }
+      }
+      animateFireworks();
+    }
+  </script>
+</body>
+</html>

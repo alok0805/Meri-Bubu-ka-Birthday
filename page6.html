@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Love for You ❤</title>
+  <link rel="stylesheet" href="style6.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&family=Outfit:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="heartCanvas"></canvas>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="perfect.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="message-container" id="messageContainer">
+    <!-- Messages will appear here one by one -->
+  </div>
+
+  <a href="page7.html" class="next-button">Next ➤</a>
+
+  <script src="script6.js"></script>
+  <script>
+    const music = document.getElementById('bgMusic');
+    // Show overlay and play music on any click/tap
+    function enableMusicOnFirstInteraction() {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.background = 'rgba(255,255,255,0.92)';
+      overlay.style.display = 'flex';
+      overlay.style.flexDirection = 'column';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.zIndex = 2000;
+
+      const msg = document.createElement('div');
+      msg.textContent = "Tap anywhere to play the music!";
+      msg.style.fontFamily = "'Pacifico', cursive";
+      msg.style.fontSize = "2em";
+      msg.style.color = "#e75480";
+      msg.style.marginBottom = "24px";
+
+      overlay.appendChild(msg);
+      document.body.appendChild(overlay);
+
+      function startMusic() {
+        music.play();
+        overlay.remove();
+        document.removeEventListener('click', startMusic);
+        document.removeEventListener('touchstart', startMusic);
+      }
+
+      document.addEventListener('click', startMusic);
+      document.addEventListener('touchstart', startMusic);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      enableMusicOnFirstInteraction();
+      music.pause();
+    });
+  </script>
+</body>
+</html>
